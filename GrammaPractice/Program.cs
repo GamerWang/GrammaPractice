@@ -82,6 +82,37 @@ namespace GrammaPractice
             // Could not create delegate inside a method.
             // The code bellow will not work here.
             // delegate void Del(int x)
+            // Use delegate handler as a callback function.
+            // delFrame.MethodWithCallback(1, 2, handler);
+            // Try delegate operations.
+            // Delegate.MethodClass methods = new Delegate.MethodClass();
+            // Delegate.Del del1 = methods.Method1;
+            // Delegate.Del del2 = methods.Method2;
+            // Delegate.Del del3 = Delegate.DelegateMethod1;
+            // Try combine delegates.
+            // Delegate.Del allMethodsDelegate = del1 + del2;
+            // allMethodsDelegate += del3;
+            // Try call the combined delegate.
+            // allMethodsDelegate("Program Main: combined text");
+            // var rawMessage = "Original message";
+            // allMethodsDelegate("Program Main: " + rawMessage);
+            // Try object params
+            // Delegate.MethodClass.Del2 del4 = methods.Method3;
+            // Delegate.MethodClass.Del2 del5 = methods.Method4;
+            // Delegate.MethodClass.Del2 combinedDelegate = del4 + del5;
+            // object o;
+            // o = 0;
+            // combinedDelegate(o);
+            // Try class params
+            // Delegate.MethodClass.Del3 del6 = methods.Method5;
+            // Delegate.MethodClass.Del3 del7 = methods.Method6;
+            // Delegate.MethodClass.Del3 combinedDelegate = del6 + del7 + del6;
+            // combinedDelegate -= del7;
+            // combinedDelegate += del7;
+            // combinedDelegate -= del6;
+            // Delegate.MethodClass.ReferenceParam r = new Delegate.MethodClass.ReferenceParam();
+            // combinedDelegate(r);
+            // Console.WriteLine("Program Main: see invocation list length: {0}", combinedDelegate.GetInvocationList().GetLength(0));
 
             while (true) ;
         }
@@ -150,6 +181,60 @@ namespace GrammaPractice
 
     class Delegate
     {
+        public class MethodClass
+        {
+            // Simple object parameter delegate.
+            public delegate object Del2(object o);
+
+            // Special class parameter delegate.
+            public delegate void Del3(ReferenceParam r);
+
+            // Class as the parameter.
+            public class ReferenceParam
+            {
+                public int data = 0;
+            }
+
+            public void Method1(string message){
+                // Try do some change on message
+                // message += " Method1 Modified";
+                // message = "New message1";
+                Console.WriteLine("{0}, with method1", message);
+            }
+
+            public void Method2(string message){
+                // message += " Method2 Modified";
+                // message = "New message2";
+                Console.WriteLine("{0}, with method2", message);
+            }
+
+            public object Method3(object o)
+            {
+                // o = 1;
+                Console.WriteLine("{0}, with method3", o);
+                return o;
+            }
+
+            public object Method4(object o)
+            {
+                o = 1;
+                Console.WriteLine("{0}, with method4", o);
+                return o;
+            }
+
+            public void Method5(ReferenceParam r)
+            {
+                r.data += 1;
+                Console.WriteLine("{0}, with method5", r.data);
+            }
+
+            public void Method6(ReferenceParam r)
+            {
+                r.data += 2;
+                Console.WriteLine("{0}, with method6", r.data);
+            }
+        }
+
         public delegate void Del(string message);
 
         // Create a method for a delegate.
@@ -170,6 +255,11 @@ namespace GrammaPractice
 
             // Call the delegate.
             handler("Delegate: Hello Delegate");
+        }
+
+        public void MethodWithCallback(int param1, int param2, Del callback)
+        {
+            callback("Delegate: The number is: " + (param1 + param2).ToString());
         }
 
         // This will work
