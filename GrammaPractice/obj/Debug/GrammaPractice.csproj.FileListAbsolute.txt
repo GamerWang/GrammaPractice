@@ -1,0 +1,6 @@
+E:\Document\C#\GrammaPractice\GrammaPractice\bin\Debug\GrammaPractice.exe.config
+E:\Document\C#\GrammaPractice\GrammaPractice\bin\Debug\GrammaPractice.exe
+E:\Document\C#\GrammaPractice\GrammaPractice\bin\Debug\GrammaPractice.pdb
+E:\Document\C#\GrammaPractice\GrammaPractice\obj\Debug\GrammaPractice.csprojResolveAssemblyReference.cache
+E:\Document\C#\GrammaPractice\GrammaPractice\obj\Debug\GrammaPractice.exe
+E:\Document\C#\GrammaPractice\GrammaPractice\obj\Debug\GrammaPractice.pdb
