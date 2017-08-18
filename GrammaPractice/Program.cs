@@ -80,7 +80,7 @@ namespace GrammaPractice
             // };
             // handler("Program Main: Anonymous delegate");
             // Could not create delegate inside a method.
-            // The code below will not work here.
+            // The code bellow will not work here.
             // delegate void Del(int x)
 
             while (true) ;
@@ -101,7 +101,7 @@ namespace GrammaPractice
             Console.WriteLine("MyCollection see variable: {0}", variable);
             Console.WriteLine("MyCollection see default(T): {0}",default(T));
             Console.WriteLine("MyColleciont see default equals null: {0}", default(T) == null);
-            // Could not  try equal 0
+            // Could not try equal 0.
             // Console.WriteLine("MyColleciont see default equals 0: {0}", default(T) == 0);
         }
         private void Add(T param)
