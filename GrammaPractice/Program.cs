@@ -308,4 +308,18 @@ namespace GrammaPractice
         delegate void Del2(int x);
         Del2 d = delegate(int k) { };
     }
+
+    // Extension test class.
+    public static class SpencerClass
+    {
+        public static int StrToInt32(this string s)
+        {
+            return Int32.Parse(s);
+        }
+
+        public static T[] SomeMethod<T>(this T[] source, int param1, int param2)
+        {
+            return source;
+        }
+    }
 }
