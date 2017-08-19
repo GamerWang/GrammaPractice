@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -121,6 +122,25 @@ namespace GrammaPractice
             var s = "Hello";
             var b = new[] { 1, 1.5, 2, 2, 5 };
             var c = new[] { "hello", null, "world" };
+
+            // Lambda Expression Test.
+            // Delegate lamb = new Delegate();
+            // lamb.LambdaTest();
+            // Use Func to create a Delegate and use a LambExpression to apply on it.
+            Func<int, bool> myLambFunc = x => x == 5;
+            Console.WriteLine("Program Main: see compare result: {0}", myLambFunc(4));
+            Func<int, int, int> myComplexFunc = (x, y) =>
+            {
+                return x * y;
+            };
+            Console.WriteLine("Program Main: see multiply result: {0}", myComplexFunc(5, 6));
+            // Use Lambda as Expression Tree
+            var numbers = new[]{ 5, 4, 1, 3, 9, 8, 6, 7, 2, };
+            Console.WriteLine("Program Main: odd numbers: {0}", numbers.Count(n => n % 2 == 1));
+            Console.WriteLine("Program Main: even numbers: {0}", numbers.Count((n) => { return n % 2 == 0; }));
+            // Other array methods could use a Lambda Expression.
+            var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);
+            var firstSmallNumbers = numbers.TakeWhile((n, index) => n >= index);
 
             while (true) ;
         }
@@ -304,9 +324,28 @@ namespace GrammaPractice
             del4("Delegate ConvaTest del4");
         }
 
+        // Lambda test function.
+        public void LambdaTest()
+        {
+            LambDel myDelegate = x => x * x;
+            var j = myDelegate(5);
+            Console.WriteLine("Delegate LambdaTest see result: {0}", j);
+
+            // Use expression index tree with Lambda expression.
+            Expression<LambDel> myET = x => x * x;
+            // Could not use myET as a function.
+            // The code bellow will print out the function text.
+            // Output:
+            //  Delegate LambTest Expression Tree result: x => (x * x)
+            Console.WriteLine("Delegate LambTest Expression Tree result: {0}", myET);
+            
+        }
+
         // This will work
         delegate void Del2(int x);
         Del2 d = delegate(int k) { };
+
+        delegate int LambDel(int i);
     }
 
     // Extension test class.
