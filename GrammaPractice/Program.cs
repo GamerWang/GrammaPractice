@@ -60,7 +60,7 @@ namespace GrammaPractice
             // Console.WriteLine("Program Main Nullable Type: y = {0}", y);
 
             // A code frame for delegate.
-            Delegate delFrame = new Delegate();
+            // Delegate delFrame = new Delegate();
             // delFrame.UseDelegate();
             // The code below will not work.
             // delFrame.Del handler = Delegate.DelegateMethod2;
@@ -114,7 +114,13 @@ namespace GrammaPractice
             // combinedDelegate(r);
             // Console.WriteLine("Program Main: see invocation list length: {0}", combinedDelegate.GetInvocationList().GetLength(0));
             // Test convariance & contravariance.
-            delFrame.ConvaTest();
+            // delFrame.ConvaTest();
+
+            // Type interface.
+            var i = 5;
+            var s = "Hello";
+            var b = new[] { 1, 1.5, 2, 2, 5 };
+            var c = new[] { "hello", null, "world" };
 
             while (true) ;
         }
