@@ -60,7 +60,7 @@ namespace GrammaPractice
             // Console.WriteLine("Program Main Nullable Type: y = {0}", y);
 
             // A code frame for delegate.
-            // Delegate delFrame = new Delegate();
+            Delegate delFrame = new Delegate();
             // delFrame.UseDelegate();
             // The code below will not work.
             // delFrame.Del handler = Delegate.DelegateMethod2;
@@ -113,6 +113,8 @@ namespace GrammaPractice
             // Delegate.MethodClass.ReferenceParam r = new Delegate.MethodClass.ReferenceParam();
             // combinedDelegate(r);
             // Console.WriteLine("Program Main: see invocation list length: {0}", combinedDelegate.GetInvocationList().GetLength(0));
+            // Test convariance & contravariance.
+            delFrame.ConvaTest();
 
             while (true) ;
         }
@@ -237,6 +239,12 @@ namespace GrammaPractice
 
         public delegate void Del(string message);
 
+        // Delegate for convariance.
+        public delegate object GetObject();
+
+        // Delegate for contravariance.
+        public delegate void SetString(string str);
+
         // Create a method for a delegate.
         public static void DelegateMethod1(string message)
         {
@@ -260,6 +268,34 @@ namespace GrammaPractice
         public void MethodWithCallback(int param1, int param2, Del callback)
         {
             callback("Delegate: The number is: " + (param1 + param2).ToString());
+        }
+
+        // Method for convariance.
+        public string GetString() { 
+            return "GetString: TestString"; 
+        }
+
+        // Method for contravariance.
+        public void SetObject(object obj) {
+            Console.WriteLine("Delegate: SetObject: type of parameter: {0}", obj.GetType());
+        }
+
+        // Test convariance & contravariance
+        public void ConvaTest()
+        {
+            // Create delegate instance.
+            GetObject del1 = GetString;
+            SetString del2 = SetObject;
+
+            // Other ways of creating delegates.
+            Func<object> del3 = GetString;
+            Action<string> del4 = SetObject;
+            
+            // See the output
+            Console.WriteLine("Delegate ConvaTest del1: {0}",del1());
+            del2("Delegate ConvaTest del2");
+            Console.WriteLine("Delegate ConvaTest del3: {0}", del3());
+            del4("Delegate ConvaTest del4");
         }
 
         // This will work
