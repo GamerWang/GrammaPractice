@@ -118,29 +118,55 @@ namespace GrammaPractice
             // delFrame.ConvaTest();
 
             // Type interface.
-            var i = 5;
-            var s = "Hello";
-            var b = new[] { 1, 1.5, 2, 2, 5 };
-            var c = new[] { "hello", null, "world" };
+            // var i = 5;
+            // var s = "Hello";
+            // var b = new[] { 1, 1.5, 2, 2, 5 };
+            // var c = new[] { "hello", null, "world" };
 
             // Lambda Expression Test.
             // Delegate lamb = new Delegate();
             // lamb.LambdaTest();
             // Use Func to create a Delegate and use a LambExpression to apply on it.
-            Func<int, bool> myLambFunc = x => x == 5;
-            Console.WriteLine("Program Main: see compare result: {0}", myLambFunc(4));
-            Func<int, int, int> myComplexFunc = (x, y) =>
-            {
-                return x * y;
-            };
-            Console.WriteLine("Program Main: see multiply result: {0}", myComplexFunc(5, 6));
+            // Func<int, bool> myLambFunc = x => x == 5;
+            // Console.WriteLine("Program Main: see compare result: {0}", myLambFunc(4));
+            // Func<int, int, int> myComplexFunc = (x, y) =>
+            // {
+            //     return x * y;
+            // };
+            // Console.WriteLine("Program Main: see multiply result: {0}", myComplexFunc(5, 6));
             // Use Lambda as Expression Tree
-            var numbers = new[]{ 5, 4, 1, 3, 9, 8, 6, 7, 2, };
-            Console.WriteLine("Program Main: odd numbers: {0}", numbers.Count(n => n % 2 == 1));
-            Console.WriteLine("Program Main: even numbers: {0}", numbers.Count((n) => { return n % 2 == 0; }));
+            // var numbers = new[]{ 5, 4, 1, 3, 9, 8, 6, 7, 2, };
+            // Console.WriteLine("Program Main: odd numbers: {0}", numbers.Count(n => n % 2 == 1));
+            // Console.WriteLine("Program Main: even numbers: {0}", numbers.Count((n) => { return n % 2 == 0; }));
             // Other array methods could use a Lambda Expression.
-            var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);
-            var firstSmallNumbers = numbers.TakeWhile((n, index) => n >= index);
+            // var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);
+            // var firstSmallNumbers = numbers.TakeWhile((n, index) => n >= index);
+            
+            // Initialization methods for Objects and Lists
+            var contacts = new List<Contact> {
+                new Contact {
+                    Name = "Chris",
+                    PhoneNumbers = new List<string>{"123455","6688"}
+                },
+                new Contact {
+                    Name = "Jeffrey",
+                    PhoneNumbers = new List<string>{"112233"}
+                }
+            };
+            Console.WriteLine("Program Main: see Contact Data: Name: {0}; PhoneNumbers: {1}", contacts[0].Name, contacts[0].PhoneNumbers[0]);
+
+            // Try Structs
+            var coords = new List<CoOrds> {
+                new CoOrds{
+                    x = 1,
+                    y = 2
+                },
+                new CoOrds{
+                    x = 3,
+                    y = 4
+                }
+            };
+            Console.WriteLine("Program Main: see CoOrds Data: x: {0}; y: {1}", coords[0].x, coords[0].y);
 
             while (true) ;
         }
@@ -360,5 +386,34 @@ namespace GrammaPractice
         {
             return source;
         }
+    }
+
+    // Class for Initialization test
+    class Contact
+    {
+        public string Name;
+        public List<string> PhoneNumbers;
+
+        public Contact()
+        {
+            Name = "";
+            PhoneNumbers = new List<string> { "" };
+        }
+        public Contact(string name, List<string> phoneNumbers)
+        {
+            Name = name;
+            PhoneNumbers = phoneNumbers;
+        }
+    }
+
+    struct CoOrds
+    {
+        public int x, y;
+
+        // public CoOrds(int p1, int p2)
+        // {
+        //     x = p1;
+        //     y = p2;
+        // }
     }
 }
