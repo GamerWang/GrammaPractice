@@ -144,29 +144,53 @@ namespace GrammaPractice
             
             // Initialization methods for Objects and Lists
             var contacts = new List<Contact> {
-                new Contact {
-                    Name = "Chris",
-                    PhoneNumbers = new List<string>{"123455","6688"}
-                },
-                new Contact {
-                    Name = "Jeffrey",
-                    PhoneNumbers = new List<string>{"112233"}
-                }
-            };
+                 new Contact {
+                     Name = "Chris",
+                     PhoneNumbers = new List<string>{"123455","6688"}
+                 },
+                 new Contact {
+                     Name = "Jeffrey",
+                     PhoneNumbers = new List<string>{"112233"}
+                 }
+             };
             Console.WriteLine("Program Main: see Contact Data: Name: {0}; PhoneNumbers: {1}", contacts[0].Name, contacts[0].PhoneNumbers[0]);
 
-            // Try Structs
-            var coords = new List<CoOrds> {
-                new CoOrds{
-                    x = 1,
-                    y = 2
+            var contacts2 = new List<Contact2> {
+                new Contact2 {
+                    name = "Chris",
+                    bwh = new List<string>{"","",""}
                 },
-                new CoOrds{
-                    x = 3,
-                    y = 4
+                new Contact2 {
+                    name = "Jeffery",
+                    bwh = new List<string>{"","",""}
                 }
             };
-            Console.WriteLine("Program Main: see CoOrds Data: x: {0}; y: {1}", coords[0].x, coords[0].y);
+
+            // Try Structs
+            // var coords = new List<CoOrds> {
+            //     new CoOrds{
+            //         x = 1,
+            //         y = 2
+            //     },
+            //     new CoOrds{
+            //         x = 3,
+            //         y = 4
+            //     }
+            // };
+            // Console.WriteLine("Program Main: see CoOrds Data: x: {0}; y: {1}", coords[0].x, coords[0].y);
+
+            // Try Anonymous 
+            var v = new { Amount = 108, Message = "Hello " };
+
+            // List Test
+            // The primary data source
+            var students = new List<Student>()
+            {
+                new Student {First="Svetlana", Last="Omelchenko", ID=111, Scores= new List<int>() {97, 92, 81, 60}},
+                new Student {First="Claire", Last="O'Donnell", ID=112, Scores= new List<int>() {75, 84, 91, 39}},
+                new Student {First="Sven", Last="Mortensen", ID=113, Scores= new List<int>() {88, 94, 65, 91}},
+                new Student {First="Cesar", Last="Garcia", ID=114, Scores= new List<int>() {97, 89, 85, 82}},
+            };
 
             while (true) ;
         }
@@ -393,27 +417,28 @@ namespace GrammaPractice
     {
         public string Name;
         public List<string> PhoneNumbers;
+    }
 
-        public Contact()
-        {
-            Name = "";
-            PhoneNumbers = new List<string> { "" };
-        }
-        public Contact(string name, List<string> phoneNumbers)
-        {
-            Name = name;
-            PhoneNumbers = phoneNumbers;
-        }
+    class Contact2
+    {
+        public string name;
+        public List<string> bwh;
     }
 
     struct CoOrds
     {
         public int x, y;
+    }
 
-        // public CoOrds(int p1, int p2)
-        // {
-        //     x = p1;
-        //     y = p2;
-        // }
+    public class Student
+    {
+        public string First { get; set; }
+        public string Last { get; set; }
+        public int ID { get; set; }
+        public List<int> Scores;
+        public override string ToString()
+        {
+            return First + " " + Last + ":" + ID;
+        }
     }
 }
