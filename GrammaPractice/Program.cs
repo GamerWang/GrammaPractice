@@ -180,14 +180,14 @@ namespace GrammaPractice
             // Console.WriteLine("Program Main: see CoOrds Data: x: {0}; y: {1}", coords[0].x, coords[0].y);
 
             // Try Anonymous 
-            var v = new { Amount = 108, Message = "Hello " };
-            var products = new[] { new { color = "Red", price = 100 }, new { color = "Blue", price = 200 } };
-            var productQuery =
-                from prod in products
-                select new {prod.color, prod.price };
-            foreach (var p in productQuery){
-                Console.WriteLine("Program Main: see Products: Color: {0}; Price: {1}", p.color, p.price);
-            }
+            // var v = new { Amount = 108, Message = "Hello " };
+            // var products = new[] { new { color = "Red", price = 100 }, new { color = "Blue", price = 200 } };
+            // var productQuery =
+            //     from prod in products
+            //     select new {prod.color, prod.price };
+            // foreach (var p in productQuery){
+            //     Console.WriteLine("Program Main: see Products: Color: {0}; Price: {1}", p.color, p.price);
+            // }
 
             // List Test
             // The primary data source
@@ -198,6 +198,15 @@ namespace GrammaPractice
             //     new Student {First="Sven", Last="Mortensen", ID=113, Scores= new List<int>() {88, 94, 65, 91}},
             //     new Student {First="Cesar", Last="Garcia", ID=114, Scores= new List<int>() {97, 89, 85, 82}},
             // };
+
+            // Auto-Implemented Properties Test
+            AutoImplementation cust1 = new AutoImplementation("Spencer", 22);
+            cust1.Age += 2;
+            Console.WriteLine("Program Main: see customer age: {0}", cust1.Age);
+            var customers = new List<AutoImplementation>
+            {
+                new AutoImplementation("Spencer",22)
+            };
 
             while (true) ;
         }
@@ -446,6 +455,20 @@ namespace GrammaPractice
         public override string ToString()
         {
             return First + " " + Last + ":" + ID;
+        }
+    }
+
+    class AutoImplementation
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        // This will make an error
+        // public in Age { get; private set;}
+        // Error appears when the code in main program want to change value of Age
+        public AutoImplementation(string name, int age)
+        {
+            Name = name;
+            Age = age;
         }
     }
 }
