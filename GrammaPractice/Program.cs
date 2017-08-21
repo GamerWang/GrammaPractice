@@ -143,28 +143,28 @@ namespace GrammaPractice
             // var firstSmallNumbers = numbers.TakeWhile((n, index) => n >= index);
             
             // Initialization methods for Objects and Lists
-            var contacts = new List<Contact> {
-                 new Contact {
-                     Name = "Chris",
-                     PhoneNumbers = new List<string>{"123455","6688"}
-                 },
-                 new Contact {
-                     Name = "Jeffrey",
-                     PhoneNumbers = new List<string>{"112233"}
-                 }
-             };
-            Console.WriteLine("Program Main: see Contact Data: Name: {0}; PhoneNumbers: {1}", contacts[0].Name, contacts[0].PhoneNumbers[0]);
+            // var contacts = new List<Contact> {
+            //      new Contact {
+            //          Name = "Chris",
+            //          PhoneNumbers = new List<string>{"123455","6688"}
+            //      },
+            //      new Contact {
+            //          Name = "Jeffrey",
+            //          PhoneNumbers = new List<string>{"112233"}
+            //      }
+            // };
+            // Console.WriteLine("Program Main: see Contact Data: Name: {0}; PhoneNumbers: {1}", contacts[0].Name, contacts[0].PhoneNumbers[0]);
 
-            var contacts2 = new List<Contact2> {
-                new Contact2 {
-                    name = "Chris",
-                    bwh = new List<string>{"","",""}
-                },
-                new Contact2 {
-                    name = "Jeffery",
-                    bwh = new List<string>{"","",""}
-                }
-            };
+            // var contacts2 = new List<Contact2> {
+            //     new Contact2 {
+            //         name = "Chris",
+            //         bwh = new List<string>{"","",""}
+            //     },
+            //     new Contact2 {
+            //         name = "Jeffery",
+            //         bwh = new List<string>{"","",""}
+            //     }
+            // };
 
             // Try Structs
             // var coords = new List<CoOrds> {
@@ -181,16 +181,23 @@ namespace GrammaPractice
 
             // Try Anonymous 
             var v = new { Amount = 108, Message = "Hello " };
+            var products = new[] { new { color = "Red", price = 100 }, new { color = "Blue", price = 200 } };
+            var productQuery =
+                from prod in products
+                select new {prod.color, prod.price };
+            foreach (var p in productQuery){
+                Console.WriteLine("Program Main: see Products: Color: {0}; Price: {1}", p.color, p.price);
+            }
 
             // List Test
             // The primary data source
-            var students = new List<Student>()
-            {
-                new Student {First="Svetlana", Last="Omelchenko", ID=111, Scores= new List<int>() {97, 92, 81, 60}},
-                new Student {First="Claire", Last="O'Donnell", ID=112, Scores= new List<int>() {75, 84, 91, 39}},
-                new Student {First="Sven", Last="Mortensen", ID=113, Scores= new List<int>() {88, 94, 65, 91}},
-                new Student {First="Cesar", Last="Garcia", ID=114, Scores= new List<int>() {97, 89, 85, 82}},
-            };
+            // var students = new List<Student>()
+            // {
+            //     new Student {First="Svetlana", Last="Omelchenko", ID=111, Scores= new List<int>() {97, 92, 81, 60}},
+            //     new Student {First="Claire", Last="O'Donnell", ID=112, Scores= new List<int>() {75, 84, 91, 39}},
+            //     new Student {First="Sven", Last="Mortensen", ID=113, Scores= new List<int>() {88, 94, 65, 91}},
+            //     new Student {First="Cesar", Last="Garcia", ID=114, Scores= new List<int>() {97, 89, 85, 82}},
+            // };
 
             while (true) ;
         }
